@@ -1,0 +1,32 @@
+package github.jadetang.aiven.metric.producer.collector;
+
+import oshi.SystemInfo;
+
+public class MetricCollectorFactory {
+
+  private static final SystemInfo SYSTEM_INFO;
+
+  static {
+    SYSTEM_INFO = new SystemInfo();
+  }
+
+  private MetricCollectorFactory() {
+
+  }
+
+  public static MetricCollector newCollector(final MachineIdentifyProvider machineIdentifyProvider,
+      final MetricCategory metricCategory) {
+    switch (metricCategory) {
+      case MEMORY:
+        return new MemoryUsageCollector(machineIdentifyProvider,
+            MetricCollectorFactory.SYSTEM_INFO.getHardware().getMemory());
+      default:
+        throw new UnsupportedOperationException(
+            String.format("The metric %s is not supported yet.", metricCategory));
+    }
+  }
+
+  public enum MetricCategory {
+    MEMORY, CPU, NET_WORK
+  }
+}
