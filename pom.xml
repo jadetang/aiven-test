@@ -10,7 +10,7 @@
    <packaging>pom</packaging>
 
    <properties>
-      <commons-beanutils.version>1.9.3</commons-beanutils.version>
+      <commons-beanutils.version>1.9.4</commons-beanutils.version>
       <configuration.version>2.7</configuration.version>
       <flyway.versoin>6.4.3</flyway.versoin>
       <guava.version>29.0-jre</guava.version>
