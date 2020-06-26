@@ -1,5 +1,5 @@
-~~~markdown
 ### Aiven home task.
+
 This is a home task for [Aiven](https://aiven.io/) interview. The project mainly consists of 2 parts, metric producer and metric consumer.
 The metric producer leverages [OSHI](https://github.com/oshi/oshi) to collect metrics from the system and send them to a Kafka topic at a fixed interval.
 The metric consumer reads metrics from Kafka and stores them into a Postgres database. The metric delivery semantics is at least once, and writing to database operation is idempotent.
@@ -7,8 +7,8 @@ The metric consumer reads metrics from Kafka and stores them into a Postgres dat
 ### The message schema.
 ```json
 {
-  "messageId": "690a2c74-b6e2-4ab6-bfd3-faf9a4b6a835",  // a unique id for each message
-  "machineIdentify": "myMac",     // a unique identify for the current machine
+  "messageId": "690a2c74-b6e2-4ab6-bfd3-faf9a4b6a835",  
+  "machineIdentify": "a unique identify for the current machine."
   "value": 2000.0,                
   "type": "TOTAL_MEMORY",
   "timeStamp": 1593181138.076000000,
@@ -42,6 +42,7 @@ The consumer and producer both use properties file to manage configuration. Thes
 
 #### Producer configuration
 The internal Kafka producer inside the metric producer also uses the metric producer properties file to config itself. In other words, you can put all the [Kafka producer configurations](https://docs.confluent.io/current/installation/configuration/producer-configs.html#cp-config-producer) in the properties.
+
 **Note**: 
 - The key **key.serializer** and **value.serializer** are ignored.
 
@@ -57,6 +58,7 @@ Besides Kafka's producer configuration, some properties specific to the metric p
 
 #### Consumer configuration
 Same as a metric producer, the internal Kafka consumer inside the metric consumer also use the metric consumer properties. Check the full list of the configuration of the [Kafka consumer](https://docs.confluent.io/current/installation/configuration/consumer-configs.html).
+
 **Note**: 
 - The **group.id** is mandatory.
 - The key **key.deserializer** and **value.deserializer** are ignored.
@@ -70,3 +72,10 @@ Besides Kafka consumer configuration, some properties specific to the metric con
  
 #### Datasource configuration 
 The metric consumer also requires a configuration for connecting the database. The see all the properties [here](https://github.com/brettwooldridge/HikariCP) if you want to tune the data source.
+
+### Attributes
+- [Introducing the Kafka Consumer: Getting Started with the New Apache Kafka 0.9 Consumer Client](https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/)
+- [Kafka: The Definitive Guide](https://www.oreilly.com/library/view/kafka-the-definitive/9781491936153/)
+- [OSHI](https://github.com/oshi/oshi)
+- [Kafka unit](https://github.com/salesforce/kafka-junit)
+
