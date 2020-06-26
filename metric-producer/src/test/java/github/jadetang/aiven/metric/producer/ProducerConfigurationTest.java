@@ -25,7 +25,7 @@ class ProducerConfigurationTest {
     final List<MetricCategory> metricCategories = config.getMetricCategories();
 
     //then
-    assertEquals(2, metricCategories.size());
+    assertEquals(3, metricCategories.size());
     assertTrue(metricCategories.contains(MetricCategory.MEMORY));
     assertTrue(metricCategories.contains(MetricCategory.CPU));
   }

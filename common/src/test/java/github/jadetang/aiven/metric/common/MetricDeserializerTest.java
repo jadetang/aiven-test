@@ -1,13 +1,12 @@
 package github.jadetang.aiven.metric.common;
 
+import static github.jadetang.aiven.metric.common.model.MetricType.TOTAL_MEMORY;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import github.jadetang.aiven.metric.common.model.Metric;
 import github.jadetang.aiven.metric.common.model.Metric.MetricBuilder;
-import github.jadetang.aiven.metric.common.model.MetricType;
 import java.io.IOException;
 import java.time.Instant;
-import java.util.Random;
 import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,10 +20,8 @@ class MetricDeserializerTest {
     final MetricSerializer metricSerializer = new MetricSerializer();
     final String topic = "test topic";
     final Metric originalMetric = new MetricBuilder().withMessageId(UUID.randomUUID().toString())
-        .withMachineIdentify("myMac").withDescription("Test metric.").withType(MetricType.TOTAL_MEMORY)
+        .withMachineIdentify("myMac").withType(TOTAL_MEMORY).withDescription(TOTAL_MEMORY.getDescription())
         .withValue(2000.00D).withTimeStamp(Instant.now()).build();
-
-    System.out.println(mapper.writeValueAsString(originalMetric));
 
     //when
     final byte[] bytes = metricSerializer.serialize(topic, originalMetric);

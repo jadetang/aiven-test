@@ -5,6 +5,15 @@ The project mainly consists of 2 parts, metric producer and metric consumer.
 The metric producer leverages [OSHI](https://github.com/oshi/oshi) to collect metrics from the system and send them to a Kafka topic at a fixed interval.
 The metric consumer reads metrics from Kafka and stores them into a Postgres database. The metric delivery semantics is at least once, and writing to database operation is idempotent.
 
+### Supported system metric
+ |metric category| metric type | description|
+ |---|---|---|
+ | cpu | load average last 1 minute |  System load average for last 1 minute. |
+ | cpu | load average last 5 minutes | System load average for last 5 minutes.|
+ | cpu | load average for last 15 minutes. | System load average for last 15 minutes.|
+ | memory  | used memory     | Used memory in bytes. |
+ | memory | total memory  | Total memory in bytes. |
+
 ### The message schema
 ```json
 {
@@ -24,7 +33,7 @@ Java 8+, Maven3+, Kafka2.5, Postgres 9.5+
 ```shell script
 mvn clean package -Dmaven.test.skip=true
 ```
-### Running the service step by step.
+### Running the service step by step
 1. Create a Postgres database on Aiven.io, check [this](https://help.aiven.io/en/articles/489573-getting-started-with-aiven-postgresql) for how to connecting to the database.
 2. Create a Kafka cluster of version 2.5 Aiven.io.
 
