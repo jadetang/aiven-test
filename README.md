@@ -1,10 +1,11 @@
-### Aiven home task.
+### Aiven home task
 
-This is a home task for [Aiven](https://aiven.io/) interview. The project mainly consists of 2 parts, metric producer and metric consumer.
+This is a home task for [Aiven](https://aiven.io/) interview. See the [requirement](Home_Assigment_Aiven_Backend_Java.txt).
+The project mainly consists of 2 parts, metric producer and metric consumer.
 The metric producer leverages [OSHI](https://github.com/oshi/oshi) to collect metrics from the system and send them to a Kafka topic at a fixed interval.
 The metric consumer reads metrics from Kafka and stores them into a Postgres database. The metric delivery semantics is at least once, and writing to database operation is idempotent.
 
-### The message schema.
+### The message schema
 ```json
 {
   "messageId": "690a2c74-b6e2-4ab6-bfd3-faf9a4b6a835",  
@@ -37,7 +38,7 @@ java -jar metric-producer/target/metric-producer-1.0-SNAPSHOT-jar-with-dependenc
 ```
 4. Run metric consumer:
 ```shell script
-java -jar metric-producer/target/metric-producer-1.0-SNAPSHOT-jar-with-dependencies.jar [propertities_file_path] [datasource_properties_path]
+java -jar metric-consumer/target/metric-consumer-1.0-SNAPSHOT-jar-with-dependencies.jar [propertities_file_path] [datasource_properties_path]
 ```
 ### Configuration
 The consumer and producer both use properties file to manage configuration. These are examples:
@@ -51,12 +52,12 @@ The internal Kafka producer inside the metric producer also uses the metric prod
 
 Besides Kafka's producer configuration, some properties specific to the metric producer are available.
 
- |Property| description | default value|
+ |property| description | default value|
  |---|---|---|
- | metric.categories | The metric categories the application will report, split by comma. |  None |
- |metric.topic| The Kafka topic the metric will be sent to. | None|
- |metric.intervalInSec| The interval in second between each metric collection activities. | 1 |
- | metric.threadNumber  | The thread number used to run metric collectors.     | 20 |
+ | metric.categories | The metric categories the application will report, split by comma. | None |
+ | metric.topic| The Kafka topic the metric will be sent to. | None |
+ | metric.intervalInSec| The interval in second between each metric collection activities. | 1 |
+ | metric.threadNumber  | The thread number used to run metric collectors. | 20 |
  | machine.id | The unique identity of the machine on which the application runs.  | None |
 
 #### Consumer configuration
@@ -67,11 +68,11 @@ Same as a metric producer, the internal Kafka consumer inside the metric consume
 - The key **key.deserializer** and **value.deserializer** are ignored.
 
 Besides Kafka consumer configuration, some properties specific to the metric consumer are available.
- |Property| description | default value|
+ |property| description | default value|
  |---|---|---|
- |metric.topic| The Kafka topic the metric will be fetched from. | None|
- |metric.consumer.number| The number of Kafka consumers. | 3 |
- |metric.pool.duration.in.ms| The Kafka consumer poll duration in millisecond. See [details](https://kafka.apache.org/25/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html). | 1000 |
+ | metric.topic| The Kafka topic the metric will be fetched from. | None|
+ | metric.consumer.number| The number of Kafka consumers. | 3 |
+ | metric.pool.duration.in.ms| The Kafka consumer poll duration in millisecond. See [details](https://kafka.apache.org/25/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html). | 1000 |
  
 #### Datasource configuration 
 The metric consumer also requires a configuration for connecting the database. The see all the properties [here](https://github.com/brettwooldridge/HikariCP) if you want to tune the data source.
