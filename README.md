@@ -8,7 +8,7 @@ The metric consumer reads metrics from Kafka and stores them into a Postgres dat
 ```json
 {
   "messageId": "690a2c74-b6e2-4ab6-bfd3-faf9a4b6a835",  
-  "machineIdentify": "a unique identify for the current machine."
+  "machineIdentify": "a unique identify for the current machine.",
   "value": 2000.0,                
   "type": "TOTAL_MEMORY",
   "timeStamp": 1593181138.076000000,
@@ -17,8 +17,8 @@ The metric consumer reads metrics from Kafka and stores them into a Postgres dat
 ```
 
 
-### Install 
-Dependency: Java 8+, Maven3+, Kafka2.5, Postgres
+### Dependency 
+Java 8+, Maven3+, Kafka2.5, Postgres 9.5+
 ### Package
 ```shell script
 mvn clean package -Dmaven.test.skip=true
@@ -26,8 +26,11 @@ mvn clean package -Dmaven.test.skip=true
 ### Running the service step by step.
 1. Create a Postgres database on Aiven.io, check [this](https://help.aiven.io/en/articles/489573-getting-started-with-aiven-postgresql) for how to connecting to the database.
 2. Create a Kafka cluster of version 2.5 Aiven.io.
-  2.1 Create a topic, such as **test-topic**.
-  2.2 Follow the [Java example](https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka) to set up your Java Keystore.
+
+  2.1. Create a topic, for example, **test-topic**.
+  
+  2.2. Follow the [Java example](https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka) to set up your Java Keystore.
+  
 3. Run metric producer:
 ```shell script
 java -jar metric-producer/target/metric-producer-1.0-SNAPSHOT-jar-with-dependencies.jar [propertities_file_path]
@@ -38,7 +41,7 @@ java -jar metric-producer/target/metric-producer-1.0-SNAPSHOT-jar-with-dependenc
 ```
 ### Configuration
 The consumer and producer both use properties file to manage configuration. These are examples:
-[metric-consumer.properties](consumer.properties), [metric-producer.properties](producer.properties), [datasource.properties](datasource.properties).
+[metric-consumer.properties](metric-consumer.properties), [metric-producer.properties](metric-producer.properties), [datasource.properties](datasource.properties).
 
 #### Producer configuration
 The internal Kafka producer inside the metric producer also uses the metric producer properties file to config itself. In other words, you can put all the [Kafka producer configurations](https://docs.confluent.io/current/installation/configuration/producer-configs.html#cp-config-producer) in the properties.
