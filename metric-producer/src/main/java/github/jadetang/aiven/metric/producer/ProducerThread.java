@@ -32,12 +32,13 @@ public class ProducerThread implements Runnable {
       try {
         final List<Metric> metrics = reporter.collect();
         log.debug("Report {} metrics.", metrics.size());
-        metrics.forEach(metric -> kafkaProducer
-            .send(new ProducerRecord<>(topic, metric.getMachineIdentify(), metric), (metadata, exception) -> {
-              if (exception != null) {
-                log.error("Error sending message, metadata: {}.", metadata, exception);
-              }
-            }));
+        metrics.forEach(
+            metric -> kafkaProducer
+                .send(new ProducerRecord<>(topic, metric.getMachineIdentify(), metric), (metadata, exception) -> {
+                  if (exception != null) {
+                    log.error("Error sending message, metadata: {}.", metadata, exception);
+                  }
+                }));
       } catch (Exception e) {
         log.error("Error when collecting message.", e);
       }

@@ -49,6 +49,7 @@ public class Main {
         initializeConsumerThreads(consumerConfiguration, metricWriter));
 
     addHook(metricConsumer);
+    log.info("Start consuming metric from topic {}", consumerConfiguration.getTopic());
     metricConsumer.start();
 
     try {

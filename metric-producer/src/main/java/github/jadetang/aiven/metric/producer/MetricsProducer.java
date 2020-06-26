@@ -21,18 +21,21 @@ public class MetricsProducer {
 
   private final List<MetricCollector> metricCollectors;
 
-  private final ProducerConfiguration configuration;
+  private final ProducerConfiguration producerConfiguration;
 
   private final Producer<String, Metric> kafkaProducer;
+
   private final ScheduledExecutorService scheduledExecutor;
+
   private volatile boolean running;
 
-  public MetricsProducer(final ProducerConfiguration configuration, final List<MetricCollector> metricCollectors,
+  public MetricsProducer(final ProducerConfiguration producerConfiguration,
+      final List<MetricCollector> metricCollectors,
       final Producer<String, Metric> kafkaProducer) {
-    this.configuration = configuration;
+    this.producerConfiguration = producerConfiguration;
     this.metricCollectors = metricCollectors;
     this.running = false;
-    this.scheduledExecutor = Executors.newScheduledThreadPool(this.configuration.getSchedulerThreadNumber(),
+    this.scheduledExecutor = Executors.newScheduledThreadPool(this.producerConfiguration.getSchedulerThreadNumber(),
         new ThreadFactoryBuilder().setNameFormat("Metric-producer-thread-%d").build());
     this.kafkaProducer = kafkaProducer;
   }
@@ -42,10 +45,12 @@ public class MetricsProducer {
       return;
     }
     running = true;
-    log.info("Start reporting metrics: {}.", configuration.getMetricCategories());
+    log.info("Start reporting metrics: {} to topic {}.", producerConfiguration.getMetricCategories(),
+        producerConfiguration
+            .getTopic());
     scheduledExecutor.scheduleAtFixedRate(
-        new ProducerThread(configuration.getTopic(), metricCollectors, kafkaProducer),
-        1, configuration.getMetricCollectIntervalInSec(), TimeUnit.SECONDS);
+        new ProducerThread(producerConfiguration.getTopic(), metricCollectors, kafkaProducer),
+        1, producerConfiguration.getMetricCollectIntervalInSec(), TimeUnit.SECONDS);
   }
 
   public synchronized void stop() {

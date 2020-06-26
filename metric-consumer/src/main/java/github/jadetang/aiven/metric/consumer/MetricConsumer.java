@@ -25,6 +25,7 @@ public class MetricConsumer {
     if (running) {
       return;
     }
+    log.info("Start consuming metric with {} consumers.", consumerThreads.size());
     for (final ConsumerThread consumerThread : consumerThreads) {
       executor.execute(consumerThread);
     }
