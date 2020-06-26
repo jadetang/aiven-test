@@ -12,6 +12,10 @@
 
    <artifactId>metric-producer</artifactId>
 
+   <properties>
+      <mainClass>github.jadetang.aiven.metric.producer.Main</mainClass>
+   </properties>
+
    <dependencies>
       <dependency>
          <groupId>com.github.oshi</groupId>

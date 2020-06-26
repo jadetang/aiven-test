@@ -10,7 +10,6 @@ public class MetricSerializer implements Serializer<Metric> {
 
   private static final Logger log = LoggerFactory.getLogger(MetricSerializer.class);
 
-
   @Override
   public byte[] serialize(final String topic, final Metric data) {
     byte[] bytes;

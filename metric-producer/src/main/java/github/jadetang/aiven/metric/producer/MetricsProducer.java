@@ -27,6 +27,7 @@ public class MetricsProducer {
 
   private final ScheduledExecutorService scheduledExecutor;
 
+
   private volatile boolean running;
 
   public MetricsProducer(final ProducerConfiguration producerConfiguration,
@@ -46,8 +47,7 @@ public class MetricsProducer {
     }
     running = true;
     log.info("Start reporting metrics: {} to topic {}.", producerConfiguration.getMetricCategories(),
-        producerConfiguration
-            .getTopic());
+        producerConfiguration.getTopic());
     scheduledExecutor.scheduleAtFixedRate(
         new ProducerThread(producerConfiguration.getTopic(), metricCollectors, kafkaProducer),
         1, producerConfiguration.getMetricCollectIntervalInSec(), TimeUnit.SECONDS);

@@ -12,6 +12,10 @@
    </parent>
    <artifactId>metric-consumer</artifactId>
 
+   <properties>
+      <mainClass>github.jadetang.aiven.metric.consumer.Main</mainClass>
+   </properties>
+
    <dependencies>
       <dependency>
          <artifactId>commons-beanutils</artifactId>
@@ -45,6 +49,10 @@
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-log4j12</artifactId>
       </dependency>
       <!-- test -->
       <dependency>
@@ -88,13 +96,6 @@
          <groupId>org.mockito</groupId>
          <artifactId>mockito-all</artifactId>
          <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-log4j12</artifactId>
-<!--
-         <scope>test</scope>
--->
       </dependency>
    </dependencies>
 </project>
