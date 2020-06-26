@@ -10,7 +10,7 @@ The metric consumer reads metrics from Kafka and stores them into a Postgres dat
  |---|---|---|
  | cpu | load average last 1 minute |  System load average for last 1 minute. |
  | cpu | load average last 5 minutes | System load average for last 5 minutes.|
- | cpu | System load average for last 15 minutes. | System load average for last 15 minutes.|
+ | cpu | load average for last 15 minutes. | System load average for last 15 minutes.|
  | memory  | used memory     | Used memory in bytes. |
  | memory | total memory  | Total memory in bytes. |
 
