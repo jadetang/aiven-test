@@ -1,8 +1,10 @@
 package github.jadetang.aiven.metric.producer.collector;
 
+import static github.jadetang.aiven.metric.common.model.MetricType.TOTAL_MEMORY;
+import static github.jadetang.aiven.metric.common.model.MetricType.USED_MEMORY;
+
 import github.jadetang.aiven.metric.common.model.Metric;
 import github.jadetang.aiven.metric.common.model.Metric.MetricBuilder;
-import github.jadetang.aiven.metric.common.model.MetricType;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,6 @@ import oshi.hardware.GlobalMemory;
  * Report memory related metrics
  */
 public class MemoryUsageCollector extends MetricCollector {
-
-  private static final String TOTAL_MEMORY_DESCRIPTION = "Total memory in bytes";
-
-  private static final String USED_MEMORY_DESCRIPTION = "Used memory in bytes";
 
   private final GlobalMemory memory;
 
@@ -34,18 +32,16 @@ public class MemoryUsageCollector extends MetricCollector {
   }
 
   private Metric totalMemory() {
-    final MetricBuilder builder = new MetricBuilder();
-    return builder.withMachineIdentify(machineIdentifyProvider.machineIdentify())
+    return new MetricBuilder().withMachineIdentify(machineIdentifyProvider.machineIdentify())
         .withMessageId(UUID.randomUUID().toString()).withValue((double) this.memory.getTotal())
-        .withType(MetricType.TOTAL_MEMORY).withTimeStamp(Instant.now())
-        .withDescription(TOTAL_MEMORY_DESCRIPTION).build();
+        .withType(TOTAL_MEMORY).withTimeStamp(Instant.now())
+        .withDescription(TOTAL_MEMORY.getDescription()).build();
   }
 
   private Metric usedMemory() {
-    final MetricBuilder builder = new MetricBuilder();
-    return builder.withMachineIdentify(machineIdentifyProvider.machineIdentify())
+    return new MetricBuilder().withMachineIdentify(machineIdentifyProvider.machineIdentify())
         .withMessageId(UUID.randomUUID().toString()).withValue((double) this.memory.getAvailable())
-        .withType(MetricType.USED_MEMORY).withTimeStamp(Instant.now()).withDescription(USED_MEMORY_DESCRIPTION)
+        .withType(USED_MEMORY).withTimeStamp(Instant.now()).withDescription(USED_MEMORY.getDescription())
         .build();
   }
 }

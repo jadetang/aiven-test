@@ -17,6 +17,6 @@ class MetricCollectorFactoryTest {
   @Test
   void unsupportedTypeShouldThrowException() {
     Assertions.assertThrows(UnsupportedOperationException.class,
-        () -> MetricCollectorFactory.newCollector(() -> "testMachine", MetricCategory.CPU));
+        () -> MetricCollectorFactory.newCollector(() -> "testMachine", MetricCategory.NET_WORK));
   }
 }

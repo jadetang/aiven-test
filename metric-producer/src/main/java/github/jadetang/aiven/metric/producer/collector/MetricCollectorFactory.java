@@ -18,8 +18,9 @@ public class MetricCollectorFactory {
       final MetricCategory metricCategory) {
     switch (metricCategory) {
       case MEMORY:
-        return new MemoryUsageCollector(machineIdentifyProvider,
-            MetricCollectorFactory.SYSTEM_INFO.getHardware().getMemory());
+        return new MemoryUsageCollector(machineIdentifyProvider, SYSTEM_INFO.getHardware().getMemory());
+      case CPU:
+        return new CpuMetricCollector(machineIdentifyProvider, SYSTEM_INFO.getHardware().getProcessor());
       default:
         throw new UnsupportedOperationException(
             String.format("The metric %s is not supported yet.", metricCategory));
