@@ -15,13 +15,13 @@
       <flyway.versoin>6.4.3</flyway.versoin>
       <guava.version>29.0-jre</guava.version>
       <HikariCP.version>3.4.5</HikariCP.version>
+      <logback.version>1.2.3</logback.version>
       <jackson.version>2.11.1</jackson.version>
       <jdbi3.version>3.14.1</jdbi3.version>
       <junit.jupiter.version>5.6.2</junit.jupiter.version>
       <kafka-junit5.version>3.2.1</kafka-junit5.version>
       <kafka.version>2.5.0</kafka.version>
       <mockito.version>1.10.19</mockito.version>
-      <slf4j-api.version>1.7.30</slf4j-api.version>
       <opentable.postgre.version>0.9.0</opentable.postgre.version>
       <oshi.version>5.1.2</oshi.version>
       <postgre.driver.version>42.2.2</postgre.driver.version>
@@ -35,6 +35,11 @@
 
    <dependencyManagement>
       <dependencies>
+         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+         </dependency>
          <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -101,16 +106,6 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgre.driver.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j-api.version}</version>
          </dependency>
          <!-- test -->
          <dependency>

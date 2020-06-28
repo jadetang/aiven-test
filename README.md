@@ -50,6 +50,7 @@ java -jar metric-producer/target/metric-producer-1.0-SNAPSHOT-jar-with-dependenc
 ```shell script
 java -jar metric-consumer/target/metric-consumer-1.0-SNAPSHOT-jar-with-dependencies.jar [propertities_file_path] [datasource_properties_path]
 ```
+
 ### Configuration
 The consumer and producer both use properties file to manage configuration. These are examples:
 [metric-consumer.properties](metric-consumer.properties), [metric-producer.properties](metric-producer.properties), [datasource.properties](datasource.properties).
@@ -86,6 +87,9 @@ Besides Kafka consumer configuration, some properties specific to the metric con
  
 #### Datasource configuration 
 The metric consumer also requires a configuration for connecting the database. The see all the properties [here](https://github.com/brettwooldridge/HikariCP) if you want to tune the data source.
+
+#### Logging configuration
+The jar is bundled with [Logback](http://logback.qos.ch/), you may specify the location of the default configuration file with a system property named `logback.configurationFile`.
 
 ### Attributes
 - [Introducing the Kafka Consumer: Getting Started with the New Apache Kafka 0.9 Consumer Client](https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/)
