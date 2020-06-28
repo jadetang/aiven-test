@@ -18,6 +18,10 @@
 
    <dependencies>
       <dependency>
+         <groupId>ch.qos.logback</groupId>
+         <artifactId>logback-classic</artifactId>
+      </dependency>
+      <dependency>
          <groupId>com.github.oshi</groupId>
          <artifactId>oshi-core</artifactId>
       </dependency>
@@ -29,14 +33,6 @@
       <dependency>
          <groupId>org.apache.commons</groupId>
          <artifactId>commons-configuration2</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-api</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-log4j12</artifactId>
       </dependency>
       <dependency>
          <artifactId>commons-beanutils</artifactId>
