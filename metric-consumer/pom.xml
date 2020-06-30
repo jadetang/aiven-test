@@ -50,6 +50,22 @@
          <groupId>org.flywaydb</groupId>
          <artifactId>flyway-core</artifactId>
       </dependency>
+      <dependency>
+         <groupId>org.jdbi</groupId>
+         <artifactId>jdbi3-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jdbi</groupId>
+         <artifactId>jdbi3-sqlobject</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jdbi</groupId>
+         <artifactId>jdbi3-postgres</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.postgresql</groupId>
+         <artifactId>postgresql</artifactId>
+      </dependency>
       <!-- test -->
       <dependency>
          <groupId>com.opentable.components</groupId>
@@ -71,22 +87,6 @@
          <groupId>org.apache.kafka</groupId>
          <artifactId>kafka_2.13</artifactId>
          <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.jdbi</groupId>
-         <artifactId>jdbi3-core</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.jdbi</groupId>
-         <artifactId>jdbi3-sqlobject</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.jdbi</groupId>
-         <artifactId>jdbi3-postgres</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.postgresql</groupId>
-         <artifactId>postgresql</artifactId>
       </dependency>
       <dependency>
          <groupId>org.mockito</groupId>
