@@ -36,12 +36,9 @@ mvn clean package -Dmaven.test.skip=true
 ```
 ### Running the service step by step
 1. Create a Postgres database on Aiven.io, check [this](https://help.aiven.io/en/articles/489573-getting-started-with-aiven-postgresql) for how to connecting to the database.
-2. Create a Kafka cluster of version 2.5 Aiven.io.
-
-  2.1. Create a topic, for example, **test-topic**.
-  
-  2.2. Follow the [Java example](https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka) to set up your Java Keystore.
-  
+2. Create a Kafka cluster of version 2.5 [aiven.io](https://aiven.io/).
+   * Create a topic, for example, **test-topic**.
+   * Follow the [Java example](https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka) to set up your Java Keystore.
 3. Run metric producer:
 ```shell script
 java -jar metric-producer/target/metric-producer-1.0-SNAPSHOT-jar-with-dependencies.jar [propertities_file_path]
