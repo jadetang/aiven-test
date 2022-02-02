@@ -24,7 +24,7 @@
       <mockito.version>1.10.19</mockito.version>
       <opentable.postgre.version>0.9.0</opentable.postgre.version>
       <oshi.version>5.1.2</oshi.version>
-      <postgre.driver.version>42.2.2</postgre.driver.version>
+      <postgre.driver.version>42.2.25</postgre.driver.version>
    </properties>
 
    <modules>
