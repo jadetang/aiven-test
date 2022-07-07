@@ -11,7 +11,7 @@
 
    <properties>
       <commons-beanutils.version>1.9.4</commons-beanutils.version>
-      <configuration.version>2.7</configuration.version>
+      <configuration.version>2.8.0</configuration.version>
       <flyway.versoin>6.4.3</flyway.versoin>
       <guava.version>29.0-jre</guava.version>
       <HikariCP.version>3.4.5</HikariCP.version>
