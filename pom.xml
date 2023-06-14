@@ -13,7 +13,7 @@
       <commons-beanutils.version>1.9.4</commons-beanutils.version>
       <configuration.version>2.7</configuration.version>
       <flyway.versoin>6.4.3</flyway.versoin>
-      <guava.version>29.0-jre</guava.version>
+      <guava.version>32.0.0-jre</guava.version>
       <HikariCP.version>3.4.5</HikariCP.version>
       <logback.version>1.2.3</logback.version>
       <jackson.version>2.11.1</jackson.version>
